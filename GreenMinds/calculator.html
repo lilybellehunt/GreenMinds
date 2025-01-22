@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carbon Footprint Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Carbon Footprint Calculator</h1>
+        <a href="index.html">Back to Home</a>
+    </header>
+
+    <div class="container">
+        <h2>Enter your details:</h2>
+        <form id="footprintForm">
+            <label for="transport">Transportation (miles/week):</label>
+            <input type="number" id="transport" placeholder="Enter miles driven">
+
+            <label for="electricity">Electricity Use (kWh/month):</label>
+            <input type="number" id="electricity" placeholder="Enter kWh consumed">
+
+            <label for="diet">Diet:</label>
+            <select id="diet">
+                <option value="meat">Meat-heavy</option>
+                <option value="balanced">Balanced</option>
+                <option value="vegetarian">Vegetarian</option>
+                <option value="vegan">Vegan</option>
+            </select>
+
+            <button type="button" onclick="calculateFootprint()">Calculate</button>
+        </form>
+
+        <div id="result" class="result" style="display: none;">
+            <h3>Your Carbon Footprint:</h3>
+            <p id="footprintOutput">Calculating...</p>
+            <p id="footprintMessage"></p>
+        </div>
+    </div>
+
+    <script>
+        function calculateFootprint() {
+            const transport = document.getElementById('transport').value || 0;
+            const electricity = document.getElementById('electricity').value || 0;
+            const diet = document.getElementById('diet').value;
+
+            let footprint = 0;
+
+            // Updated emission factor for miles driven
+            footprint += transport * 0.13;
+            footprint += electricity * 0.5;
+
+            switch (diet) {
+                case 'meat':
+                    footprint += 3;
+                    break;
+                case 'balanced':
+                    footprint += 2;
+                    break;
+                case 'vegetarian':
+                    footprint += 1.5;
+                    break;
+                case 'vegan':
+                    footprint += 1;
+                    break;
+            }
+
+            // Display the result and give feedback
+            const resultDiv = document.getElementById('result');
+            const output = document.getElementById('footprintOutput');
+            const message = document.getElementById('footprintMessage');
+
+            output.textContent = `Your estimated carbon footprint is ${footprint.toFixed(2)} kg CO2 per month.`;
+
+            // Feedback based on footprint
+            if (footprint < 10) {
+                message.textContent = "Great job! Your carbon footprint is low. Keep up the good work!";
+                message.style.color = "green";
+            } else {
+                message.textContent = "Your carbon footprint is quite high. Consider reducing your impact by making more eco-friendly choices.";
+                message.style.color = "red";
+            }
+
+            resultDiv.style.display = 'block';
+        }
+    </script>
+</body>
+</html>
