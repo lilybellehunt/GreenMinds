@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carbon Footprint Information</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            text-align: center;
+        }
+
+        header {
+            background-image: url('images/banner.png');
+            background-size: cover;
+            background-position: center;
+            color: #4caf50;
+            width: 100%;
+            height: 40vh; /* Adjusted height for better fit */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+        .co2-tracker {
+            margin: 30px 0;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            text-align: center;
+            max-width: 800px;
+        }
+
+
+        header h1 {
+            font-size: 3rem;
+            margin: 0;
+        }
+
+        .banner-overlay {
+            padding: 20px 40px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .banner-overlay h1 {
+            font-size: 2.5rem;
+            margin: 0;
+        }
+
+        .nav-bar {
+            background-color: #4caf50;
+            padding: 1rem;
+            text-align: center;
+            width: 100%;
+        }
+
+        .nav-bar a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 1.2rem;
+        }
+
+        .nav-bar a:hover {
+            text-decoration: underline;
+        }
+
+        .intro {
+            font-size: 1.5rem;
+            line-height: 1.6;
+            color: #555;
+            margin-top: 2rem;
+            max-width: 800px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+        }
+
+        .video-container {
+            max-width: 100%;
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        video {
+            width: 100%;
+            height: auto;
+        }
+
+        footer {
+            background-color: #4CAF50;
+            color: white;
+            width: 100%;
+            padding: 0.5rem 0; /* Reduced padding */
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+        }
+
+        /* Media Query for small screens */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+
+            .intro {
+                font-size: 1.2rem;
+                padding: 15px;
+            }
+
+            .nav-bar {
+                display: flex;
+                flex-direction: column;
+            }
+
+            .nav-bar a {
+                margin-bottom: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="banner-overlay">
+            <h1>Carbon Footprint Information</h1>
+        </div>
+    </header>
+
+    <div class="nav-bar">
+        <a href="calculator.html">Carbon Footprint Calculator</a>
+        <a href="index.html">Home</a>
+    </div>
+
+    <div class="intro">
+        <h2>What is a Carbon Footprint?</h2>
+        <p>Your carbon footprint is the total amount of greenhouse gases you produce in your daily activities, such as driving a car, using electricity, or eating certain foods. It is measured in terms of carbon dioxide (CO₂) emissions.</p>
+        
+        <h2>Why is it Important?</h2>
+        <p>Carbon emissions are one of the leading causes of climate change. Reducing your carbon footprint can help reduce the negative impacts on the environment, including rising global temperatures, melting glaciers, and more extreme weather events.</p>
+
+        <h2>How to Reduce Your Carbon Footprint</h2>
+        <ul>
+            <li>Use energy-efficient appliances and lighting.</li>
+            <li>Choose renewable energy sources like solar or wind.</li>
+            <li>Walk, bike, or use public transportation instead of driving.</li>
+            <li>Eat a plant-based diet to reduce emissions from food production.</li>
+            <li>Reduce, reuse, and recycle to minimize waste.</li>
+        </ul>
+        <div class="co2-tracker">
+            <h2>Live Global CO₂ Emissions</h2>
+            <p>Stay updated with real-time global CO₂ emissions data. Understanding the impact of emissions worldwide can help us make better choices.</p>
+            <iframe src="https://www.co2.earth" width="100%" height="400px" style="border: none;"></iframe>
+        </div>
+
+        <h2>Watch This Video to Learn More:</h2>
+        <div class="video-container">
+            <video controls>
+                <source src="path/to/your/video.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    </div>
+
+   
+</body>
+</html>
