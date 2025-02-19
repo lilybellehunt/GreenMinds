@@ -4,86 +4,242 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Carbon Footprint Calculator</title>
-    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-image: url('images/banner.png');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            width: 100%;
+            height: 40vh; /* Adjusted height for better fit */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .banner-overlay {
+            
+            padding: 20px 40px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .banner-overlay h1 {
+            font-size: 2.5rem;
+            margin: 0;
+        }
+        
+        .nav-bar {
+            background-color: #4caf50;
+            padding: 1rem;
+            text-align: center;
+        }
+        .nav-bar a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 1.2rem;
+        }
+        .container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 1.5rem;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2 {
+            color: #4caf50;
+        }
+        .form-group {
+            margin: 1rem 0;
+        }
+        label {
+            font-weight: bold;
+        }
+        input, select, button {
+            padding: 0.8rem;
+            width: 100%;
+            margin-top: 0.5rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            background-color: #4caf50;
+            color: white;
+            cursor: pointer;
+            border: none;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .result {
+            margin-top: 1.5rem;
+            padding: 1rem;
+            border-radius: 4px;
+        }
+        .leaderboard {
+            margin-top: 2rem;
+            padding: 1rem;
+            background-color: #e9f7e9;
+            border-radius: 8px;
+            border: 1px solid #4caf50;
+        }
+        .leaderboard h3 {
+            color: #4caf50;
+        }
+        .conversion-section {
+            margin-top: 2rem;
+            padding: 1rem;
+            background-color: #e9f7e9;
+            border-radius: 8px;
+            border: 1px solid #4caf50;
+        }
+        .suggestions {
+            margin-top: 1.5rem;
+            padding: 1rem;
+            background-color: #f0f9f0;
+            border: 1px solid #4caf50;
+            border-radius: 8px;
+        }
+    </style>
 </head>
 <body>
     <header>
-        <h1>Carbon Footprint Calculator</h1>
-        <a href="index.html">Back to Home</a>
+        <h1> <br> <br> <br> <br> Carbon Footprint Calculator</h1>
     </header>
 
+    <div class="nav-bar">
+        <a href="index.html">Home</a>
+        <a href="information.html">Information</a>
+    </div>
+
     <div class="container">
-        <h2>Enter your details:</h2>
+        <h2>Enter Your Details</h2>
         <form id="footprintForm">
-            <label for="transport">Transportation (miles/week):</label>
-            <input type="number" id="transport" placeholder="Enter miles driven">
-
-            <label for="electricity">Electricity Use (kWh/month):</label>
-            <input type="number" id="electricity" placeholder="Enter kWh consumed">
-
-            <label for="diet">Diet:</label>
-            <select id="diet">
-                <option value="meat">Meat-heavy</option>
-                <option value="balanced">Balanced</option>
-                <option value="vegetarian">Vegetarian</option>
-                <option value="vegan">Vegan</option>
-            </select>
-
+            <div class="form-group">
+                <label for="miles">Miles Driven (miles/week):</label>
+                <input type="number" id="miles" min="0" placeholder="Enter miles driven">
+            </div>
+            <div class="form-group">
+                <label for="electricity">Electricity Use (kWh/month):</label>
+                <input type="number" id="electricity" min="0" placeholder="Enter kWh consumed">
+            </div>
+            <div class="form-group">
+                <label for="diet">Diet:</label>
+                <select id="diet">
+                    <option value="meat">Meat-heavy</option>
+                    <option value="balanced">Balanced</option>
+                    <option value="vegetarian">Vegetarian</option>
+                    <option value="vegan">Vegan</option>
+                </select>
+            </div>
             <button type="button" onclick="calculateFootprint()">Calculate</button>
         </form>
 
         <div id="result" class="result" style="display: none;">
             <h3>Your Carbon Footprint:</h3>
             <p id="footprintOutput">Calculating...</p>
-            <p id="footprintMessage"></p>
+        </div>
+
+        <div id="leaderboard" class="leaderboard" style="display: none;">
+            <h3>Leaderboard</h3>
+            <p>Your Carbon Footprint is compared to the world average of 4.6 tonnes CO2 per person per year.</p>
+            <p id="leaderboardMessage"></p>
+        </div>
+
+        <div id="suggestions" class="suggestions" style="display: none;">
+            <h3> Suggestions to Reduce Your Footprint:</h3>
+            <ul id="suggestionList">
+                <!-- Suggestions will be populated here -->
+            </ul>
+            <br> <br>
+            Want to learn more? Navigate to our <a href="information.html" style="color: #4caf50;">Information Page</a> for more information about reducing emissions!
         </div>
     </div>
 
     <script>
-        function calculateFootprint() {
-            const transport = document.getElementById('transport').value || 0;
-            const electricity = document.getElementById('electricity').value || 0;
-            const diet = document.getElementById('diet').value;
+    function calculateFootprint() {
+        const miles = Math.max(0, parseFloat(document.getElementById('miles').value) || 0);
+        const electricity = Math.max(0, parseFloat(document.getElementById('electricity').value) || 0);
+        const diet = document.getElementById('diet').value;
 
-            let footprint = 0;
-
-            // Updated emission factor for miles driven
-            footprint += transport * 0.13;
-            footprint += electricity * 0.5;
-
-            switch (diet) {
-                case 'meat':
-                    footprint += 3;
-                    break;
-                case 'balanced':
-                    footprint += 2;
-                    break;
-                case 'vegetarian':
-                    footprint += 1.5;
-                    break;
-                case 'vegan':
-                    footprint += 1;
-                    break;
-            }
-
-            // Display the result and give feedback
-            const resultDiv = document.getElementById('result');
-            const output = document.getElementById('footprintOutput');
-            const message = document.getElementById('footprintMessage');
-
-            output.textContent = `Your estimated carbon footprint is ${footprint.toFixed(2)} kg CO2 per month.`;
-
-            // Feedback based on footprint
-            if (footprint < 10) {
-                message.textContent = "Great job! Your carbon footprint is low. Keep up the good work!";
-                message.style.color = "green";
-            } else {
-                message.textContent = "Your carbon footprint is quite high. Consider reducing your impact by making more eco-friendly choices.";
-                message.style.color = "red";
-            }
-
-            resultDiv.style.display = 'block';
+        let footprint = miles * 0.411 + electricity * 0.5;
+        switch (diet) {
+            case 'meat': footprint += 3; break;
+            case 'balanced': footprint += 2; break;
+            case 'vegetarian': footprint += 1.5; break;
+            case 'vegan': footprint += 1; break;
         }
+
+        const resultDiv = document.getElementById('result');
+        const output = document.getElementById('footprintOutput');
+
+        resultDiv.style.display = 'block';
+
+        // Convert to tonnes per year
+        const annualFootprint = (footprint * 12) / 1000; // Convert kg to tonnes
+        const monthlyFootprint = footprint.toFixed(2);
+
+        // Determine color based on comparison with world average
+        const isBelowAverage = annualFootprint < 4.6;
+        resultDiv.style.backgroundColor = isBelowAverage ? "rgba(0, 255, 0, 0.2)" : "rgba(255, 0, 0, 0.2)";
+        resultDiv.style.border = isBelowAverage ? "2px solid green" : "2px solid red";
+
+        output.innerHTML = `
+            <strong>Your estimated monthly carbon footprint:</strong> ${monthlyFootprint} kg CO2 per month.<br>
+            <strong>Your estimated annual carbon footprint:</strong> <span style="color:${isBelowAverage ? 'green' : 'red'};">${annualFootprint.toFixed(2)} tonnes CO2 per year</span>.<br>
+            <span style="color:${isBelowAverage ? 'green' : 'red'};">
+                ${isBelowAverage ? "You're below" : "You're above"} the world average of 4.6 tonnes CO2 per year.
+            </span> 
+
+        `;
+
+        // Display personalized suggestions based on the user's behavior
+        const suggestionsDiv = document.getElementById('suggestions');
+        const suggestionList = document.getElementById('suggestionList');
+        suggestionsDiv.style.display = 'block';
+        suggestionList.innerHTML = '';
+
+        if (electricity > 500) {
+            // High electricity usage
+            suggestionList.innerHTML += `
+                <p>Your electricity usage is quite high. Consider switching to energy effecient appliances and LED bulbs. </p>
+                
+            `;
+        }
+
+        if (diet === 'meat') {
+            // Meat-heavy diet
+            suggestionList.innerHTML += `
+                <p>Your meat-heavy diet contributes significantly to your carbon footprint. Consider reducing your meat intake or switching to a more plant-based diet.</p>
+                
+            `;
+        }
+
+        if (miles > 50) {
+            // High travel (miles driven)
+            suggestionList.innerHTML += `
+                <p>Frequent driving contributes a lot to your carbon footprint. Consider using public transport, carpooling, or biking instead of driving</p>
+                
+            `;
+        }
+
+        // General tips if none of the above
+        if (suggestionList.innerHTML === '') {
+            suggestionList.innerHTML += `
+                <p>Keep up the good work! Continue to look for ways to reduce your carbon footprint. <br> Navigate to our information page to learn more about sustainable living!</p>
+            `;
+        }
+    }
     </script>
 </body>
 </html>
