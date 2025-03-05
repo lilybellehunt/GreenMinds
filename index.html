@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carbon Footprint Tracker</title>
+    
+    <!-- Import external stylesheets -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* General Styles */
+        *{
+            box-sizing: border-box;
+            font-family: 'Lucida Sans Unicode', 'Lucida Grande', sans-serif;
+        }
+
+        /* General body styling */
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            text-align: center;
+        }
+
+        /* Header section with background image */
+        header {
+            background-image: url('greenminds_photos/image.png');
+            background-size: cover;
+            background-position: center;
+            color: #4caf50;
+            width: 100%;
+            height: 300px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        header h1 {
+            font-size: 3rem;
+            margin: 0;
+        }
+
+        /* Navigation bar styling */
+        .nav-bar {
+            background-color: #4caf50;
+            padding: 15px;
+            text-align: center;
+            width: 100%;
+        }
+
+        .nav-bar a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 1.2rem;
+        }
+
+        .nav-bar a:hover {
+            text-decoration: underline;
+        }
+
+        /* Introduction section styling */
+        .intro {
+            font-size: 1.5rem;
+            line-height: 1.6;
+            color: #555;
+            margin-top: 2rem;
+            max-width: 800px;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+        }
+
+        footer {
+            margin-top: 40px;
+            background-color: #4CAF50;
+            color: white;
+            width: 100%;
+            padding: 1rem 0;
+            text-align: center;
+            font-size: 1rem;
+            position: relative; /* Ensures it appears after content */
+        }
+
+    
+        /* Responsive design for smaller screens */
+        @media (max-width: 768px) {
+            h1, h2 {
+            color: #4caf50;
+            text-align: center;
+
+            }
+
+            .intro {
+                font-size: 1.2rem;
+                padding: 15px;
+            }
+
+            .nav-bar {
+                display: flex;
+                flex-direction: column;
+                padding: 15px;
+            }
+
+            .nav-bar a {
+                margin-bottom: 3px;
+            }
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- Header section -->
+    <header>
+        <h1>Carbon Footprint Calculator</h1>
+    </header>
+
+    <!-- Navigation bar -->
+    <nav class="nav-bar">
+        <a href="calculator.html">Carbon Footprint Calculator</a>
+        <a href="information.html">Information</a>
+    </nav>
+
+    <!-- Introduction section -->
+    <section class="intro">
+        <p>Welcome to the Carbon Footprint Tracker. Our goal is to help you track and reduce your environmental impact. By providing you with the tools to measure your carbon footprint from transportation, energy use, and diet, we aim to encourage eco-friendly choices.</p>
+        <p>It's easy to get started! Simply use the Carbon Footprint Calculator to estimate your emissions and take steps towards a more sustainable lifestyle. You can also visit the information page to learn more about carbon footprints and ways to reduce them.</p>
+        <p>Join us in making the world a greener place!</p>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Carbon Footprint Tracker</p>
+    </footer>
+
+</body>
+</html>

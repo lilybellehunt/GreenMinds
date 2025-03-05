@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carbon Footprint Information</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* General Styles */
+        * {
+            box-sizing: border-box;
+            font-family: 'Lucida Sans Unicode', 'Lucida Grande', sans-serif;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            text-align: center;
+        }
+
+        /* Header section with background image */
+        header {
+            background-image: url('greenminds_photos/image.png');
+            background-size: cover;
+            background-position: center;
+            color: #4caf50;
+            width: 100%;
+            height: 300px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        header h1 {
+            font-size: 3rem;
+            margin: 0;
+        }
+
+        /* Navigation bar styling */
+        .nav-bar {
+            background-color: #4caf50;
+            padding: 15px;
+            text-align: center;
+            width: 100%;
+        }
+
+        .nav-bar a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 1.2rem;
+        }
+
+        .nav-bar a:hover {
+            text-decoration: underline;
+        }
+
+
+        /* Introduction Section */
+        .intro {
+            font-size: 1.5rem;
+            line-height: 1.6;
+            color: #555;
+            margin-top: 2rem;
+            max-width: 800px;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+        }
+
+        /* CO2 Tracker Section */
+        .co2-tracker {
+            margin: 30px 0;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            text-align: center;
+            max-width: 800px;
+        }
+
+        /* Video Section */
+        .video-container {
+            max-width: 100%;
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        video {
+            width: 100%;
+            height: auto;
+        }
+
+        /* Footer */
+        footer {
+            margin-top: 40px;
+            background-color: #4CAF50;
+            color: white;
+            width: 100%;
+            padding: 1rem 0;
+            text-align: center;
+            font-size: 1rem;
+            position: relative; /* Ensures it appears after content */
+        }
+
+        ul {
+            text-align: left;
+        }
+
+        
+
+        /* Media Query for small screens */
+        @media (max-width: 768px) {
+            h1, h2 {
+            color: #4caf50;
+            text-align: center;
+
+            }
+
+            .intro {
+                font-size: 1.2rem;
+                padding: 15px;
+            }
+
+            .nav-bar {
+                display: flex;
+                flex-direction: column;
+                padding: 15px;
+            }
+
+            .nav-bar a {
+                margin-bottom: 3px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Carbon Footprint Calculator</h1>
+    </header>
+
+    <!-- Navigation Bar -->
+    <div class="nav-bar">
+        <a href="calculator.html">Carbon Footprint Calculator</a>
+        <a href="index.html">Home</a>
+    </div>
+
+    <!-- Information Section -->
+    <div class="intro">
+    <!-- Video Section -->
+    <h2>Watch This Video to Learn More:</h2>
+    <div class="video-container">
+        <iframe 
+             src="https://depauledu-my.sharepoint.com/personal/lhunt9_depaul_edu/_layouts/15/embed.aspx?UniqueId=fe04eee1-62aa-4b01-9213-cd5fa39da1d0&embed=%7B%22hvm%22%3Atrue%2C%22ust%22%3Atrue%7D&referrer=StreamWebApp&referrerScenario=EmbedDialog.Create" 
+            width="640" height="360" 
+            frameborder="0" 
+            scrolling="no" 
+            allowfullscreen 
+            title="GreenMinds Video">
+        </iframe>
+    </div>
+
+        <h2>What is a Carbon Footprint?</h2>
+        <p>Your carbon footprint is the total amount of greenhouse gases you produce in your daily activities, such as driving a car, using electricity, or eating certain foods. It is measured in terms of carbon dioxide (CO₂) emissions.</p>
+        
+        <h2>Why is it Important?</h2>
+        <p>Carbon emissions are one of the leading causes of climate change. Reducing your carbon footprint can help reduce the negative impacts on the environment, including rising global temperatures, melting glaciers, and more extreme weather events.</p>
+
+        <h2>How to Reduce Your Carbon Footprint</h2>
+        <ul>
+            <li>Use energy-efficient appliances and lighting.</li>
+            <li>Choose renewable energy sources like solar or wind.</li>
+            <li>Walk, bike, or use public transportation instead of driving.</li>
+            <li>Eat a plant-based diet to reduce emissions from food production.</li>
+            <li>Reduce, reuse, and recycle to minimize waste.</li>
+        </ul>
+        
+        <!-- Live CO2 Emissions Tracker -->
+        <div class="co2-tracker">
+            <h2>Live Global CO₂ Emissions</h2>
+            <p>Stay updated with real-time global CO₂ emissions data. Understanding the impact of emissions worldwide can help us make better choices.</p>
+            <iframe src="https://www.co2.earth" width="100%" height="400px" style="border: none;"></iframe>
+        </div>
+
+    </div>
+    
+    <footer>
+        <p>&copy; 2025 Carbon Footprint Tracker</p>
+    </footer>
+</body>
+</html>
