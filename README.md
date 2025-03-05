@@ -2,6 +2,8 @@
 
 GreenMinds is a website designed to help users track and reduce their carbon footprint. It features a **Carbon Footprint Calculator**, **educational resources**, and a **real-time CO₂ tracker** to promote eco-friendly living and raise awareness about climate change.
 
+Live Website: 
+
 ## Features
 
 - **Carbon Footprint Calculator**: Estimate your environmental impact based on daily activities.
