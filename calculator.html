@@ -171,7 +171,7 @@
                     <option value="vegan">Vegan</option>
                 </select>
             </div>
-            <button type="button" onclick="calculateFootprint()">Calculate</button>
+            <button type="button" onclick="displayFootprint()">Calculate</button>
         </form>
         <div id="result" class="result">
             <h3>Your Carbon Footprint:</h3>
@@ -195,16 +195,14 @@
     </footer>
 
 
+    <script src="calculator.js"></script>
     <script>
-    function calculateFootprint() {
-    const miles = Math.max(0, parseFloat(document.getElementById('miles').value) || 0);
-    const electricity = Math.max(0, parseFloat(document.getElementById('electricity').value) || 0);
+    function displayFootprint() {
+    const miles = parseFloat(document.getElementById('miles').value) || 0;
+    const electricity = parseFloat(document.getElementById('electricity').value) || 0;
     const diet = document.getElementById('diet').value;
 
-    let footprint = miles * 0.411 + electricity * 0.5;
-    footprint += { meat: 3, balanced: 2, vegetarian: 1.5, vegan: 1 }[diet];
-
-    const annualFootprint = (footprint * 12) / 1000;
+    const { monthlyFootprint, annualFootprint } = calculateFootprint(miles, electricity, diet);
     const resultBox = document.getElementById('result');
 
     resultBox.style.display = 'block';
@@ -212,7 +210,7 @@
     resultBox.style.backgroundColor = annualFootprint < 4.6 ? '#f0f9f0' : '#ffcccc'; // Greenish for low, red for high
 
     document.getElementById('footprintOutput').innerHTML = `
-        <strong>Monthly Carbon Footprint:</strong> ${footprint.toFixed(2)} kg CO2/month<br>
+        <strong>Monthly Carbon Footprint:</strong> ${monthlyFootprint.toFixed(2)} kg CO2/month<br>
         <strong>Annual Carbon Footprint:</strong> <span style="color:${annualFootprint < 4.6 ? 'green' : 'red'};">
             ${annualFootprint.toFixed(2)} tonnes CO2/year
         </span><br>

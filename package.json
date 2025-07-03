@@ -1,0 +1,13 @@
+{
+  "name": "greenminds",
+  "version": "1.0.0",
+  "description": "GreenMinds is a website designed to help users track and reduce their carbon footprint. It features a **Carbon Footprint Calculator**, **educational resources**, and a **real-time CO₂ tracker** to promote eco-friendly living and raise awareness about climate change.",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs"
+}
