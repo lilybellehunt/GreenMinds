@@ -219,6 +219,18 @@
         ${annualFootprint < 4.6 ? "You're below" : "You're above"} the world average of 4.6 tonnes a year.
     `;
 
+    const leaderboardBox = document.getElementById('leaderboard');
+    const leaderboardMsg = document.getElementById('leaderboardMessage');
+    const percentOfAverage = (annualFootprint / 4.6) * 100;
+    if (annualFootprint < 4.6) {
+        leaderboardMsg.textContent = `Great job! You're ${(100 - percentOfAverage).toFixed(0)}% below the world average.`;
+    } else if (annualFootprint > 4.6) {
+        leaderboardMsg.textContent = `You're ${(percentOfAverage - 100).toFixed(0)}% above the world average.`;
+    } else {
+        leaderboardMsg.textContent = "You're exactly at the world average.";
+    }
+    leaderboardBox.style.display = 'block';
+
 
 
         const suggestionList = document.getElementById('suggestionList');
